@@ -1,0 +1,21 @@
+<md-content>
+  <md-list>
+    <md-subheader class="md-no-sticky">Quotes</md-subheader>
+    <md-list-item ng-repeat="quote in quotes">
+      <md-card class="md-list-item-text">
+        <md-card-content>
+          <h3 class="md-title">{{quote.title}}</h3>
+
+          <pre class="md-body-1">{{quote.quote}}</pre>
+        </md-card-content>
+        <md-card-footer>
+          <h6 class="md-caption">{{quote.published}}</h6>
+        </md-card-footer>
+
+      </md-card>
+
+    </md-list-item>
+  </md-list>
+</md-content>
+
+
