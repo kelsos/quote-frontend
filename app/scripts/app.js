@@ -1,14 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name quoteApp
- * @description
- * # quoteApp
- *
- * Main module of the application.
- */
-angular
+var app = angular
   .module('quoteApp', [
     'ngAnimate',
     'ngCookies',
@@ -18,8 +10,18 @@ angular
     'ngTouch',
     'ngMaterial',
     'angular-jwt',
-    'restangular'
-  ])
+    'restangular',
+    'linkify'
+  ]);
+/**
+ * @ngdoc overview
+ * @name quoteApp
+ * @description
+ * # quoteApp
+ *
+ * Main module of the application.
+ */
+app
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -34,7 +36,7 @@ angular
         redirectTo: '/'
       });
   })
-  .config(function(RestangularProvider) {
+  .config(function (RestangularProvider) {
     RestangularProvider.setBaseUrl('http://api.quote.dev/');
   }).config(function Config($httpProvider, jwtInterceptorProvider) {
 
@@ -44,4 +46,11 @@ angular
 
     $httpProvider.interceptors.push('jwtInterceptor');
   });
+
+app.filter('newlines', function() {
+  return function(data) {
+   if (!data) return data;
+    return data.replace(/(?:\r\n|\r|\n)/g, '<br />');
+  }
+});
 

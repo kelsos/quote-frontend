@@ -13,6 +13,5 @@ angular.module('quoteApp')
     var quotes = Restangular.all('quote');
     quotes.getList().then(function (results) {
       $scope.quotes = results;
-      console.log(results)
     });
   });

@@ -6,7 +6,7 @@
         <md-card-content>
           <h3 class="md-title">{{quote.title}}</h3>
 
-          <pre class="md-body-1">{{quote.quote}}</pre>
+          <p class="md-body-1" ng-bind-html="quote.quote | newlines | linkify"></p>
         </md-card-content>
         <md-card-footer>
           <h6 class="md-caption">{{quote.published}}</h6>
