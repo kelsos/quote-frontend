@@ -45,11 +45,12 @@
   </div>
 </md-toolbar>
 
-<md-button class="md-fab md-fab-bottom-right md-button" aria-label="Add a new Quote">
-  <md-icon md-svg-icon="images/ic_add_48px.svg"></md-icon>
-</md-button>
+<div layout="column" flex id="content">
+  <md-content layout="column" flex class="md-padding" ng-view="">
 
-<md-content ng-view="" class="container"></md-content>
+  </md-content>
+</div>
+
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -87,6 +88,7 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/quote.js"></script>
+<script src="scripts/controllers/adddialog.js"></script>
 <!-- endbuild -->
 </body>
 </html>
