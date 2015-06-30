@@ -47,10 +47,19 @@ app
     $httpProvider.interceptors.push('jwtInterceptor');
   });
 
-app.filter('newlines', function() {
-  return function(data) {
-   if (!data) return data;
+app.filter('newlines', function () {
+  return function (data) {
+    if (!data) return data;
     return data.replace(/(?:\r\n|\r|\n)/g, '<br />');
+  }
+});
+
+app.filter('dateConvert', function() {
+  return function(data) {
+    if (!data) return data;
+    data.replace('Z', 'UTC');
+    var date = new Date(data);
+    return date.toLocaleString();
   }
 });
 
