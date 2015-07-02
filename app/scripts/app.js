@@ -54,12 +54,29 @@ app.filter('newlines', function () {
   }
 });
 
-app.filter('dateConvert', function() {
-  return function(data) {
+app.filter('dateConvert', function () {
+  return function (data) {
     if (!data) return data;
     data.replace('Z', 'UTC');
     var date = new Date(data);
     return date.toLocaleString();
+  }
+});
+
+app.config(function ($routeProvider, $httpProvider) {
+  $httpProvider.interceptors.push('responseObserver');
+});
+
+app.factory('responseObserver', function responseObserver($q, $location) {
+  return {
+    'responseError': function (errorResponse) {
+      switch (errorResponse.status) {
+        case 403:
+          $location.path("/");
+          break;
+      }
+      return $q.reject(errorResponse);
+    }
   }
 });
 
