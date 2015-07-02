@@ -32,6 +32,10 @@ app
         templateUrl: 'views/quote.html',
         controller: 'QuoteCtrl'
       })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
