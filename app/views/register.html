@@ -1,0 +1,32 @@
+<md-content>
+  <div layout="row" layout-align="center" flex="50">
+    <h1 class="md-title">Register</h1>
+  </div>
+
+  <form name="login_form">
+    <md-content>
+      <div layout="row" flex="50" layout-align="center">
+        <md-input-container>
+          <label>E-mail</label>
+          <input ng-model="username" title="username" type="email" required="required">
+        </md-input-container>
+      </div>
+      <div layout-align="center" layout="row" flex="50">
+        <md-input-container>
+          <label>Password</label>
+          <input ng-model="password" type="password" title="password" required="required">
+        </md-input-container>
+      </div>
+      <div layout-align="center" layout="row" flex="50">
+        <md-input-container>
+          <label>Confirm</label>
+          <input ng-model="password_confirm" type="password" title="password" required="required">
+        </md-input-container>
+      </div>
+    </md-content>
+  </form>
+
+  <div layout="row" layout-align="center center">
+    <md-button ng-click="register()">Register</md-button>
+  </div>
+</md-content>

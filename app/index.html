@@ -22,31 +22,34 @@
 <![endif]-->
 
 
-<md-toolbar>
+<md-toolbar ng-controller="ToolbarCtrl">
   <div class="md-toolbar-tools">
     <md-button class="md-icon-button" aria-label="Settings">
       <md-icon md-svg-icon="images/ic_menu_48px.svg"></md-icon>
     </md-button>
     <h2>
-      <span>Quote3</span>
+      <span>Quote</span>
     </h2>
     <span flex></span>
 
-    <md-button class="md-icon-button" aria-label="Previous">
-      <md-icon md-svg-icon="images/ic_arrow_back_48px.svg"></md-icon>
-    </md-button>
+    <md-button ng-click="navigateLogin()">Login</md-button>
+    <md-button ng-click="navigateRegister()">Register</md-button>
 
-    <md-button class="md-icon-button" aria-label="Random">
-      <md-icon md-svg-icon="images/ic_shuffle_48px.svg"></md-icon>
-    </md-button>
+    <!--<md-button class="md-icon-button" aria-label="Previous">-->
+      <!--<md-icon md-svg-icon="images/ic_arrow_back_48px.svg"></md-icon>-->
+    <!--</md-button>-->
 
-    <md-button class="md-icon-button" aria-label="Next">
-      <md-icon md-svg-icon="images/ic_arrow_forward_48px.svg"></md-icon>
-    </md-button>
+    <!--<md-button class="md-icon-button" aria-label="Random">-->
+      <!--<md-icon md-svg-icon="images/ic_shuffle_48px.svg"></md-icon>-->
+    <!--</md-button>-->
 
-    <md-button class="md-icon-button" aria-label="More">
-      <md-icon md-svg-icon="images/ic_more_vert_48px.svg"></md-icon>
-    </md-button>
+    <!--<md-button class="md-icon-button" aria-label="Next">-->
+      <!--<md-icon md-svg-icon="images/ic_arrow_forward_48px.svg"></md-icon>-->
+    <!--</md-button>-->
+
+    <!--<md-button class="md-icon-button" aria-label="More">-->
+      <!--<md-icon md-svg-icon="images/ic_more_vert_48px.svg"></md-icon>-->
+    <!--</md-button>-->
   </div>
 </md-toolbar>
 
@@ -95,6 +98,10 @@
 <script src="scripts/controllers/quote.js"></script>
 <script src="scripts/controllers/adddialog.js"></script>
 <script src="scripts/controllers/admin.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/register.js"></script>
+<script src="scripts/controllers/forgot-password.js"></script>
+<script src="scripts/controllers/toolbar.js"></script>
 <!-- endbuild -->
 </body>
 </html>

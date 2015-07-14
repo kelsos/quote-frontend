@@ -36,6 +36,18 @@ app
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .when('/forgot-password', {
+        templateUrl: 'views/forgot-password.html',
+        controller: 'ForgotPasswordCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -82,5 +94,18 @@ app.factory('responseObserver', function responseObserver($q, $location) {
       return $q.reject(errorResponse);
     }
   }
+});
+
+app.directive('ngEnter', function () {
+  return function (scope, element, attrs) {
+    element.bind('keydown keypress', function (event) {
+      if (event.which === 13) {
+        scope.$apply(function () {
+          scope.$eval(attrs.ngEnter);
+        });
+        event.preventDefault();
+      }
+    });
+  };
 });
 
