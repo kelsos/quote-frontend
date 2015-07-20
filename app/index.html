@@ -22,7 +22,7 @@
 <![endif]-->
 
 
-<md-toolbar ng-controller="ToolbarCtrl">
+<md-toolbar ng-controller="ToolbarController as toolbar">
   <div class="md-toolbar-tools">
     <md-button class="md-icon-button" aria-label="Settings">
       <md-icon md-svg-icon="images/ic_menu_48px.svg"></md-icon>
@@ -89,19 +89,48 @@
 <script src="bower_components/lodash/lodash.js"></script>
 <script src="bower_components/restangular/dist/restangular.js"></script>
 <script src="bower_components/angular-linkify/angular-linkify.js"></script>
+<script src="bower_components/rxjs/dist/rx.all.js"></script>
+<script src="bower_components/rxjs/dist/rx.all.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.all.compat.js"></script>
+<script src="bower_components/rxjs/dist/rx.all.compat.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.js"></script>
+<script src="bower_components/rxjs/dist/rx.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.compat.js"></script>
+<script src="bower_components/rxjs/dist/rx.compat.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.aggregates.js"></script>
+<script src="bower_components/rxjs/dist/rx.aggregates.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.async.js"></script>
+<script src="bower_components/rxjs/dist/rx.async.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.async.compat.js"></script>
+<script src="bower_components/rxjs/dist/rx.async.compat.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.backpressure.js"></script>
+<script src="bower_components/rxjs/dist/rx.backpressure.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.binding.js"></script>
+<script src="bower_components/rxjs/dist/rx.binding.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.coincidence.js"></script>
+<script src="bower_components/rxjs/dist/rx.coincidence.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.experimental.js"></script>
+<script src="bower_components/rxjs/dist/rx.experimental.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.lite.js"></script>
+<script src="bower_components/rxjs/dist/rx.lite.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.lite.compat.js"></script>
+<script src="bower_components/rxjs/dist/rx.lite.compat.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.joinpatterns.js"></script>
+<script src="bower_components/rxjs/dist/rx.joinpatterns.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.testing.js"></script>
+<script src="bower_components/rxjs/dist/rx.testing.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.time.js"></script>
+<script src="bower_components/rxjs/dist/rx.time.min.js"></script>
+<script src="bower_components/rxjs/dist/rx.virtualtime.js"></script>
+<script src="bower_components/rxjs/dist/rx.virtualtime.min.js"></script>
+<script src="bower_components/angular-rx/dist/rx.angular.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/quote.js"></script>
-<script src="scripts/controllers/adddialog.js"></script>
-<script src="scripts/controllers/admin.js"></script>
-<script src="scripts/controllers/login.js"></script>
-<script src="scripts/controllers/register.js"></script>
-<script src="scripts/controllers/forgot-password.js"></script>
-<script src="scripts/controllers/toolbar.js"></script>
 <!-- endbuild -->
+
+<script src="out/app.js"></script>
 </body>
 </html>

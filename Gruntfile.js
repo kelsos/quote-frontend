@@ -40,6 +40,10 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
+      ts: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+        tasks: ['newer:tslint:all', 'ts:dev']
+      },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
@@ -58,8 +62,37 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.app %>/out/app.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      }
+    },
+
+    // Typescript configuration
+    ts: {
+      options: {
+        target: 'es5',
+        module: 'commonjs',
+        sourcemap: true,
+        declaration: false,
+        nolib: false,
+        comments: false
+      },
+      dev: {
+        src: ['<%= yeoman.app %>/scripts/{,*/}*.ts'], // The source typescript files, http://gruntjs.com/configuring-tasks#files
+        reference: '<%= yeoman.app %>/scripts/reference.ts',  // If specified, generate this file that you can use for your reference management
+        out: '<%= yeoman.app %>/out/app.js',
+        watch: 'app',
+        options: {                  // override the main options, http://gruntjs.com/configuring-tasks#options
+          sourcemap: true,
+          declaration: true
+        }
+      },
+      build: {                        // another target
+        src: ['<%= yeoman.app %>/scripts/*.ts'],
+        options: {                  // overide the main options for this target
+          sourcemap: false
+        }
       }
     },
 
@@ -142,7 +175,8 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
+            '!<%= yeoman.dist %>/.git{,*/}*',
+            '<%= yeoman.app %>/out'
           ]
         }]
       },
@@ -156,7 +190,7 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          map: true,
+          map: true
         },
         files: [{
           expand: true,
@@ -452,6 +486,7 @@ module.exports = function (grunt) {
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
+    'ts:build',
     'autoprefixer',
     'concat',
     'ngAnnotate',
@@ -465,6 +500,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
+    'ts',
+    'tslint:all',
     'newer:jshint',
     'test',
     'build'

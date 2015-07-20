@@ -1,0 +1,84 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "angularjs/angular.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "angular-jwt/angular-jwt.d.ts": {
+      "commit": "8c9ede30fca2a095018e70940806cc9c8aa122f6"
+    },
+    "angular-material/angular-material.d.ts": {
+      "commit": "8c9ede30fca2a095018e70940806cc9c8aa122f6"
+    },
+    "restangular/restangular.d.ts": {
+      "commit": "8c9ede30fca2a095018e70940806cc9c8aa122f6"
+    },
+    "rx/rx.all.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.time.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.aggregates.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.async.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.time-lite.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx-lite.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.async-lite.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.binding-lite.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.binding.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.coincidence.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.coincidence-lite.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.joinpatterns.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.experimental.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.virtualtime.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.testing.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.backpressure.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx/rx.backpressure-lite.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "rx-angular/rx.angular.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "angularjs/angular-route.d.ts": {
+      "commit": "99942cab1446292c79c4328218abd37621505112"
+    }
+  }
+}
