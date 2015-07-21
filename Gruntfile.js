@@ -72,7 +72,7 @@ module.exports = function (grunt) {
     ts: {
       options: {
         target: 'es5',
-        module: 'commonjs',
+        module: '',
         sourcemap: true,
         declaration: false,
         nolib: false,

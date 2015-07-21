@@ -3,11 +3,25 @@
 ///<reference path="../../typings/angularjs/angular.d.ts"/>
 ///<reference path="../../typings/angularjs/angular-route.d.ts"/>
 ///<reference path="../../typings/angularjs/angular-route.d.ts"/>
-///<reference path="reference.ts"/>
+
+/// <reference path="controllers/AddDialogController.ts" />
+/// <reference path="controllers/AdminController.ts" />
+/// <reference path="controllers/LoginController.ts" />
+/// <reference path="controllers/MainController.ts" />
+/// <reference path="controllers/QuoteController.ts" />
+/// <reference path="controllers/RegistrationController.ts" />
+/// <reference path="controllers/RetrievePasswordController.ts" />
+/// <reference path="controllers/ToolbarController.ts" />
+/// <reference path="directives/NgEnter.ts" />
+/// <reference path="model/LoginResponse.ts" />
+/// <reference path="model/Quote.ts" />
+/// <reference path="model/User.ts" />
+/// <reference path="services/RestService.ts" />
+/// <reference path="services/SessionService.ts" />
 
 'use strict';
 
-var app = angular
+angular
   .module('quoteApp', [
     'ngAnimate',
     'ngCookies',
@@ -20,41 +34,47 @@ var app = angular
     'restangular',
     'linkify'
   ])
-  .controller('ToolbarController', controllers.ToolbarController)
-  .controller('RetrievePasswordController', controllers.RetrievePasswordController)
-  .controller('RegistrationController', controllers.RegistrationController)
-  .controller('QuoteController', controllers.QuoteController)
-  .controller('MainController', controllers.MainController)
-  .controller('LoginController', controllers.LoginController)
-  .controller('AdminController', controllers.AdminController)
-  .controller('AddDialogController', controllers.AddDialogController)
-  .service('SessionService', services.SessionService)
-  .service('RestService', services.RestService)
-  .directive('ngEnter', ()=> directives.NgEnter)
+  .controller('ToolbarController',quote.controllers.ToolbarController)
+  .controller('RetrievePasswordController', quote.controllers.RetrievePasswordController)
+  .controller('RegistrationController', quote.controllers.RegistrationController)
+  .controller('QuoteController', quote.controllers.QuoteController)
+  .controller('MainController', quote.controllers.MainController)
+  .controller('LoginController', quote.controllers.LoginController)
+  .controller('AdminController', quote.controllers.AdminController)
+  .controller('AddDialogController', quote.controllers.AddDialogController)
+  .service('SessionService', quote.services.SessionService)
+  .service('RestService', quote.services.RestService)
+  .directive('ngEnter', ()=> quote.directives.NgEnter)
   .config(($routeProvider:ng.route.IRouteProvider) => {
     $routeProvider.when('/', {
       templateUrl: 'views/main.html',
-      controller: 'MainController'
+      controller: 'MainController',
+      controllerAs: 'main'
     })
       .when('/quote', {
         templateUrl: 'views/quote.html',
-        controller: 'QuoteController'
+        controller: 'QuoteController',
+        controllerAs: 'quote'
       })
       .when('/admin', {
         templateUrl: 'views/admin.html',
-        controller: 'AdminController'
+        controller: 'AdminController',
+        controllerAs: 'admin'
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'LoginController'
+        controller: 'LoginController',
+        controllerAs: 'login'
       })
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'RegistrationController'
+        controller: 'RegistrationController',
+        controllerAs: 'register'
       })
       .when('/forgot-password', {
         templateUrl: 'views/forgot-password.html',
-        controller: 'RetrievePasswordController'
+        controller: 'RetrievePasswordController',
+        controllerAs: 'retrieve'
       })
       .otherwise({
         redirectTo: '/'

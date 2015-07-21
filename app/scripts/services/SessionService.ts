@@ -1,5 +1,6 @@
-module services {
+module quote.services {
   export class SessionService {
+    public static $inject = ['jwtHelper'];
     constructor(private helper:angular.jwt.IJwtHelper) {
 
     }
@@ -22,7 +23,7 @@ module services {
      * @returns {boolean} True or false depending on the availability and non expiry of the jwt token.
      */
     public isSessionActive(): boolean {
-      return (SessionService.getToken() != null && !this.isTokenExpired())
+      return (SessionService.getToken() != null && !this.isTokenExpired());
     }
   }
 }

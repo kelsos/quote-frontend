@@ -1,4 +1,4 @@
-module directives {
+module quote.directives {
   export class NgEnter implements ng.IDirective {
     constructor(scope:ng.IScope, element:ng.IRootElementService, attrs:ng.IAttributes) {
       element.bind('keydown keypress', function (event) {

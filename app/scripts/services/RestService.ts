@@ -1,6 +1,7 @@
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
 /// <reference path="../../../typings/rx/rx.all.d.ts" />
-module services {
+
+module quote.services {
   export class RestService {
     public static $inject = ['Restangular'];
     constructor(private restangular:restangular.IService) {
