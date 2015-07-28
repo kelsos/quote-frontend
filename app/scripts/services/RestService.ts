@@ -43,12 +43,12 @@ module quote.services {
         login.post({
           username: username,
           password: password
-        }).then(($response:model.LoginResponse) => {
-            SessionService.setToken($response.token);
-            observer.onNext($response);
+        }).then(($response:restangular.IResponse) => {
+            SessionService.setToken($response.data.token);
+            observer.onNext($response.data);
             observer.onCompleted();
-          }, ($response:model.LoginResponse) => {
-            observer.onNext($response);
+          }, ($response:restangular.IResponse) => {
+            observer.onNext($response.data);
             observer.onCompleted();
           }
         );

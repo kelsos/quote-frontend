@@ -21,21 +21,34 @@ module quote.controllers {
     }
 
     public login():void {
-      this.api.login(this.username, this.password).subscribe((response:model.LoginResponse) => {
-        if (response.code == 200) {
+      var username = this.username,
+        password = this.password;
 
-        } else {
-          this.showAlert(response.description);
-        }
-      });
+      if (username == undefined || username.length == 0 || password == undefined || password.length == 0) {
+        this.showAlert("Username/Password fields can't be empty");
+        return;
+      }
+
+      this.api.login(username, password)
+        .subscribe((response:model.LoginResponse) => {
+          if (response.code == 200) {
+            this.location.path("/quote")
+          } else {
+            this.showAlert(response.description);
+          }
+        });
     }
 
     private showAlert(description:string) {
-      this.dialog.show({
+
+      var dialogService = this.dialog;
+
+      var alertDialog = dialogService.alert({
         title: 'Error',
         content: description,
         ok: 'Close'
       });
+      dialogService.show(alertDialog);
     }
 
   }
