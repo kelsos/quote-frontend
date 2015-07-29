@@ -25,7 +25,7 @@ module quote.controllers {
         password = this.password;
 
       if (username == undefined || username.length == 0 || password == undefined || password.length == 0) {
-        this.showAlert("Username/Password fields can't be empty");
+        this.showAlert("Please fill properly the username and password fields.");
         return;
       }
 
@@ -51,5 +51,8 @@ module quote.controllers {
       dialogService.show(alertDialog);
     }
 
+    public forgotPassword():void {
+      this.location.path("/forgot-password")
+    }
   }
 }

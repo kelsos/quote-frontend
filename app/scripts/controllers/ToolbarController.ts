@@ -3,10 +3,14 @@
 module quote.controllers {
   export class ToolbarController {
 
-    public static $inject = ["$location"];
+    public static $inject = ["$location", 'SessionService'];
 
-    constructor(private location:ng.ILocationService) {
+    constructor(private location:ng.ILocationService, private session:quote.services.SessionService) {
 
+    }
+
+    public userIsLogged():boolean {
+      return this.session.isSessionActive()
     }
 
     public navigateLogin():void {
