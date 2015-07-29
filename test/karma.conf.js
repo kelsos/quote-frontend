@@ -70,6 +70,7 @@ module.exports = function(config) {
       'bower_components/rxjs/dist/rx.virtualtime.js',
       'bower_components/rxjs/dist/rx.virtualtime.min.js',
       'bower_components/angular-rx/dist/rx.angular.js',
+      'bower_components/angular-messages/angular-messages.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

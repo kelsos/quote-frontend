@@ -24,6 +24,7 @@
 angular
   .module('quoteApp', [
     'ngAnimate',
+    'ngMessages',
     'ngCookies',
     'ngResource',
     'ngRoute',

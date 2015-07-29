@@ -1,7 +1,12 @@
 module quote.model {
-  export interface LoginResponse {
-    token:string;
-    code:number;
-    description:string;
+  export interface Response {
+    code: number;
+    success: boolean;
+    description: string;
   }
+
+  export interface LoginResponse extends Response{
+    token: string;
+  }
+
 }

@@ -8,25 +8,32 @@
       <div layout="row" flex="50" layout-align="center">
         <md-input-container>
           <label>E-mail</label>
-          <input ng-model="username" title="username" type="email" required="required">
+          <input ng-model="register.username" name="username" title="username" type="email" required="required" ng-minlength="5">
+          <div ng-messages="login_form.username.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-minlength">The e-mail address has to be at least 5 characters long.</div>
+          </div>
         </md-input-container>
       </div>
       <div layout-align="center" layout="row" flex="50">
         <md-input-container>
           <label>Password</label>
-          <input ng-model="password" type="password" title="password" required="required">
+          <input ng-model="register.password" type="password" title="password" required="required" ng-minlength="4">
+          <div ng-messages="login_form.password.$error">
+            <div ng-message="required">Field cannot be empty</div>
+          </div>
         </md-input-container>
       </div>
       <div layout-align="center" layout="row" flex="50">
         <md-input-container>
           <label>Confirm</label>
-          <input ng-model="password_confirm" type="password" title="password" required="required">
+          <input ng-model="register.confirmation" type="password" title="password" required="required" ng-minlength="4">
         </md-input-container>
       </div>
     </md-content>
   </form>
 
   <div layout="row" layout-align="center center">
-    <md-button ng-click="register()">Register</md-button>
+    <md-button ng-click="register.proceed()">Register</md-button>
   </div>
 </md-content>
