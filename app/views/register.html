@@ -21,6 +21,7 @@
           <input ng-model="register.password" type="password" title="password" required="required" ng-minlength="4">
           <div ng-messages="login_form.password.$error">
             <div ng-message="required">Field cannot be empty</div>
+            <div ng-message="md-minlength">The password has to be at least 4 characters long.</div>
           </div>
         </md-input-container>
       </div>
@@ -30,10 +31,12 @@
           <input ng-model="register.confirmation" type="password" title="password" required="required" ng-minlength="4">
         </md-input-container>
       </div>
+
+      <div layout="row" layout-align="center center">
+        <md-button ng-click="register.proceed()">Register</md-button>
+      </div>
     </md-content>
   </form>
 
-  <div layout="row" layout-align="center center">
-    <md-button ng-click="register.proceed()">Register</md-button>
-  </div>
+
 </md-content>

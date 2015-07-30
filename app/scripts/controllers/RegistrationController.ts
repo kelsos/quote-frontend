@@ -5,10 +5,11 @@ namespace quote.controllers {
     public password:string;
     public confirmation:string;
 
-    public static $inject = ['$mdDialog', 'RestService'];
+    public static $inject = ['$mdDialog', 'RestService', '$location'];
 
-    constructor(private dialogService:ng.material.IDialogService, private restService: quote.services.RestService) {
-
+    constructor(private dialogService:ng.material.IDialogService,
+                private restService:quote.services.RestService,
+                private locationService:ng.ILocationService) {
     }
 
     public proceed():void {
@@ -17,9 +18,20 @@ namespace quote.controllers {
         confirmation = this.confirmation;
 
 
-      if (password !== confirmation) {
+      var nonEmpty = password != undefined && password.length > 0;
 
+      if (nonEmpty && (password !== confirmation)) {
+        this.showAlert("Confirmation doesn't much the supplied password");
       }
+
+      this.restService.register(username, password)
+        .subscribe((response:quote.model.Response) => {
+          if (response.code == 200)  {
+            this.locationService.path('/registration-successful');
+          } else {
+            this.showAlert(response.description);
+          }
+        });
     }
 
     private showAlert(description:string) {
