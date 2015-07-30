@@ -1,4 +1,4 @@
-module quote.services {
+namespace quote.services {
   export class SessionService {
     public static $inject = ['jwtHelper'];
     constructor(private helper:angular.jwt.IJwtHelper) {

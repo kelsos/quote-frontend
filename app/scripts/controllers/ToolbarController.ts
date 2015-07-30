@@ -1,6 +1,6 @@
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
 
-module quote.controllers {
+namespace quote.controllers {
   export class ToolbarController {
 
     public static $inject = ["$location", 'SessionService'];

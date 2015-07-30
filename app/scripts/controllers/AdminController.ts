@@ -1,4 +1,4 @@
-module quote.controllers {
+namespace quote.controllers {
   'use strict';
   export class AdminController {
     public static $inject = ['SessionService', 'RestService'];

@@ -2,7 +2,7 @@
 /// <reference path="../../../typings/rx/rx.all.d.ts" />
 ///<reference path="../model/LoginResponse.ts"/>
 
-module quote.services {
+namespace quote.services {
   export class RestService {
     public static $inject = ['Restangular'];
 

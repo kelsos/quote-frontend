@@ -1,4 +1,4 @@
-module quote.controllers {
+namespace quote.controllers {
   export class QuoteController {
 
     constructor() {

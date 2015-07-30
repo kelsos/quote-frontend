@@ -1,5 +1,5 @@
 ///<reference path="../../../typings/angular-material/angular-material.d.ts"/>
-module quote.controllers {
+namespace quote.controllers {
   export class AddDialogController {
 
     public static $inject = ["$mdDialog"];

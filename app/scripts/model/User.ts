@@ -1,4 +1,4 @@
-module quote.model {
+namespace quote.model {
   export interface User {
     id:number;
     username:string;
