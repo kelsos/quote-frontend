@@ -1,6 +1,8 @@
+///<reference path="../../../typings/angularjs/angular.d.ts"/>
+/// <reference path="../../../typings/angularjs/angular-mocks.d.ts" />
 'use strict';
 
-describe('Controller: AddDialogCtrl', function () {
+describe('Controller: AddDialogCtrl', () => {
 
   // load the controller's module
   beforeEach(module('quoteApp'));
@@ -9,14 +11,14 @@ describe('Controller: AddDialogCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(($controller, $rootScope) => {
     scope = $rootScope.$new();
     AdddialogCtrl = $controller('AddDialogCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
+  it('should attach a list of awesomeThings to the scope', () => {
     expect(scope.awesomeThings.length).toBe(3);
   });
 });

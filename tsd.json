@@ -79,6 +79,12 @@
     },
     "angularjs/angular-route.d.ts": {
       "commit": "99942cab1446292c79c4328218abd37621505112"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "77ec1408257c677f8fd8d6798ebaf6bd87c11b9d"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "77ec1408257c677f8fd8d6798ebaf6bd87c11b9d"
     }
   }
 }
