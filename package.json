@@ -4,12 +4,7 @@
   "author": "\"Kelsos\" Konstantinos Paparas",
   "homepage": "https://github.com/kelsos/quote-frontend",
   "repository": {},
-  "licenses": [
-    {
-      "type": "Apache-2.0",
-      "url": "https://github.com/kelsos/quote-frontend/blob/master/LICENSE"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
