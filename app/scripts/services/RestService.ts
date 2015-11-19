@@ -80,6 +80,29 @@ namespace quote.services {
         })
       });
     }
+
+    /**
+     * Attempts to call the forget password call and returns an Observable that will call the onNext once and then it
+     * will complete.
+     *
+     * @param username The user's account identifier (email address)
+     * @returns {Rx.Observable<model.Response>}
+       */
+    public resetPassword(username:string):Rx.Observable<model.Response> {
+      return Rx.Observable.create((observer:Rx.Observer<model.Response>) => {
+        var forgot = this.restangular.all("forgot");
+
+        forgot.post({
+          username: username
+        }).then(($response:restangular.IResponse) => {
+          observer.onNext($response.data);
+          observer.onCompleted();
+        }, ($response:restangular.IResponse) => {
+          observer.onNext($response.data);
+          observer.onCompleted();
+        })
+      })
+    }
   }
 }
 
