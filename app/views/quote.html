@@ -1,10 +1,10 @@
-<md-button class="md-fab md-fab-bottom-right md-button" aria-label="Add a new Quote" ng-click="openDialog()">
+<md-button class="md-fab md-fab-bottom-right md-button" aria-label="Add a new Quote" ng-click="quote.openDialog()">
   <md-icon md-svg-icon="images/ic_add_48px.svg"></md-icon>
 </md-button>
 
-<md-content>
+<md-content layout-align="center center" flex="80" flex-offset="10">
   <md-list>
-    <md-list-item ng-repeat="quote in quotes">
+    <md-list-item ng-repeat="quote in quote.quotes">
 
     <div class="md-list-item-text">
       <h3 class="md-title">{{quote.title}}</h3>

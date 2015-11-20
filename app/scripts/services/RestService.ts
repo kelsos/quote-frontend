@@ -3,41 +3,44 @@
 ///<reference path="../model/LoginResponse.ts"/>
 
 namespace quote.services {
+  import SessionService = quote.services.SessionService;
+  import Quote = quote.model.Quote;
+  import Response = quote.model.Response;
+  import ICollectionPromise = restangular.ICollectionPromise;
+  import User = quote.model.User;
   export class RestService {
-    public static $inject = ['Restangular'];
+    public static $inject = ['Restangular', "SessionService"];
 
-    constructor(private restangular:restangular.IService) {
+    constructor(private restangular:restangular.IService, private session:SessionService) {
 
     }
 
     /**
      *
      * Does a remote request to the quote-backend and returns a Promise to a collection of
-     * {@link model.User} items
+     * {@link User} items
      *
-     * @returns {ICollectionPromise<model.User>|ICollectionPromise<T>}
+     * @returns {Rx.Observable<User[]>}
      */
-    public loadUsers():restangular.ICollectionPromise<model.User> {
-      var users = this.restangular.all('/admin/users');
-      return users.getList();
+    public loadUsers():Rx.Observable<User[]> {
+      return Rx.Observable.fromPromise(this.restangular.all('/admin/users').getList());
     }
 
     /**
      * Does a remote request to the quote-backend api and returns a Promise to a collection of
-     * {@link model.Quote} items;
+     * {@link Quote} items;
      *
-     * @returns {ICollectionPromise<model.Quote>|ICollectionPromise<T>}
+     * @returns {Rx.Observable<Quote[]>}
      */
-    public loadQuotes():restangular.ICollectionPromise<model.Quote> {
-      var quotes = this.restangular.all('quote');
-      return quotes.getList();
+    public loadQuotes():Rx.Observable<Quote[]> {
+      return Rx.Observable.fromPromise(this.restangular.all('quote').getList());
     }
 
     /**
      * Attempts to login the user and returns an observable that will return a Login response and then complete.
      * @param username The user's username
      * @param password The user's password
-     * @returns {Rx.Observable<model.LoginResponse>|Observable<model.LoginResponse>}
+     * @returns {Rx.Observable<LoginResponse>|Observable<LoginResponse>}
      */
     public login(username:string, password:string):Rx.Observable<model.LoginResponse> {
       return Rx.Observable.create((observer:Rx.Observer<model.LoginResponse>) => {
@@ -45,12 +48,12 @@ namespace quote.services {
         login.post({
           username: username,
           password: password
-        }).then(($response:restangular.IResponse) => {
-            SessionService.setToken($response.data.token);
-            observer.onNext($response.data);
+        }).then(($response:model.LoginResponse) => {
+            this.session.setToken($response.token);
+            observer.onNext($response);
             observer.onCompleted();
-          }, ($response:restangular.IResponse) => {
-            observer.onNext($response.data);
+          }, ($response:model.LoginResponse) => {
+            observer.onNext($response);
             observer.onCompleted();
           }
         );
@@ -62,7 +65,7 @@ namespace quote.services {
      * will complete.
      * @param username The user's username
      * @param password The user's password
-     * @returns {Rx.Observable<model.Response>}
+     * @returns {Rx.Observable<Response>}
      */
     public register(username:string, password:string):Rx.Observable<model.Response> {
       return Rx.Observable.create((observer:Rx.Observer<model.Response>) => {
@@ -71,11 +74,11 @@ namespace quote.services {
         register.post({
           username: username,
           password: password
-        }).then(($response:restangular.IResponse) => {
-          observer.onNext($response.data);
+        }).then(($response:model.Response) => {
+          observer.onNext($response);
           observer.onCompleted();
-        }, ($response:restangular.IResponse) => {
-          observer.onNext($response.data);
+        }, ($response:model.Response) => {
+          observer.onNext($response);
           observer.onCompleted();
         })
       });
@@ -86,19 +89,19 @@ namespace quote.services {
      * will complete.
      *
      * @param username The user's account identifier (email address)
-     * @returns {Rx.Observable<model.Response>}
-       */
-    public resetPassword(username:string):Rx.Observable<model.Response> {
-      return Rx.Observable.create((observer:Rx.Observer<model.Response>) => {
+     * @returns {Rx.Observable<Response>}
+     */
+    public resetPassword(username:string):Rx.Observable<Response> {
+      return Rx.Observable.create((observer:Rx.Observer<Response>) => {
         var forgot = this.restangular.all("forgot");
 
         forgot.post({
           username: username
-        }).then(($response:restangular.IResponse) => {
-          observer.onNext($response.data);
+        }).then(($response:Response) => {
+          observer.onNext($response);
           observer.onCompleted();
-        }, ($response:restangular.IResponse) => {
-          observer.onNext($response.data);
+        }, ($response:Response) => {
+          observer.onNext($response);
           observer.onCompleted();
         })
       })

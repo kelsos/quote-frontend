@@ -1,35 +1,25 @@
 namespace quote.controllers {
+  import Quote = quote.model.Quote;
+  import RestService = quote.services.RestService;
+
   export class QuoteController {
 
-    constructor() {
+    public quotes:Quote[];
+
+    public static $inject = ['RestService'];
+
+    constructor(private restService:RestService) {
+      this.load();
+    }
+
+    public load():void {
+      this.restService.loadQuotes().subscribe((quotes:Quote[]) => {
+        this.quotes = quotes;
+      })
+    }
+
+    public openDialog():void {
 
     }
   }
 }
-//'use strict';
-//
-///**
-// * @ngdoc function
-// * @name quoteApp.controller:QuoteCtrl
-// * @description
-// * # QuoteCtrl
-// * Controller of the quoteApp
-// */
-//angular.module('quoteApp')
-//  .controller('QuoteCtrl', function ($scope, Restangular, $mdDialog) {
-//
-//    var quotes = Restangular.all('quote');
-//    quotes.getList().then(function (results) {
-//      $scope.quotes = results;
-//    });
-//
-//    $scope.openDialog = function($event) {
-//      var parentEl = angular.element(document.body);
-//      $mdDialog.show({
-//        parent: parentEl,
-//        targetEvent: $event,
-//        templateUrl: 'views/adddialog.html',
-//        controller: 'AddDialogCtrl'
-//      })
-//    }
-//  });

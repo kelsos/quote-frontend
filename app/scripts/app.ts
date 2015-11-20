@@ -19,7 +19,7 @@
 /// <reference path="services/RestService.ts" />
 /// <reference path="services/SessionService.ts" />
 
-'use strict';
+"use strict";
 
 angular
   .module('quoteApp', [
@@ -35,6 +35,9 @@ angular
     'restangular',
     'linkify'
   ])
+  .service('SessionService', quote.services.SessionService)
+  .service('RestService', quote.services.RestService)
+  .directive('ngEnter', ()=> quote.directives.NgEnter)
   .controller('ToolbarController',quote.controllers.ToolbarController)
   .controller('RetrievePasswordController', quote.controllers.RetrievePasswordController)
   .controller('RegistrationController', quote.controllers.RegistrationController)
@@ -43,9 +46,6 @@ angular
   .controller('LoginController', quote.controllers.LoginController)
   .controller('AdminController', quote.controllers.AdminController)
   .controller('AddDialogController', quote.controllers.AddDialogController)
-  .service('SessionService', quote.services.SessionService)
-  .service('RestService', quote.services.RestService)
-  .directive('ngEnter', ()=> quote.directives.NgEnter)
   .config(($routeProvider:ng.route.IRouteProvider) => {
     $routeProvider.when('/', {
       templateUrl: 'views/main.html',
@@ -55,7 +55,7 @@ angular
       .when('/quote', {
         templateUrl: 'views/quote.html',
         controller: 'QuoteController',
-        controllerAs: 'quote'
+        controllerAs: 'quote',
       })
       .when('/admin', {
         templateUrl: 'views/admin.html',
