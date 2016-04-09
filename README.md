@@ -2,21 +2,9 @@
 
 Simple front end for a small quote website
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
-
-## Build & development
-
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
-
-
 ## License
  
-    Copyright 2015 Konstantinos Paparas
+    Copyright 2015-2016 Konstantinos Paparas
  
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

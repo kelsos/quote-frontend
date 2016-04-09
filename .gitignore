@@ -1,8 +1,7 @@
 node_modules
 dist
-.tmp
 .sass-cache
 .idea
-bower_components
 typings
-app/out
+src/**/*.js
+src/**/*.map
