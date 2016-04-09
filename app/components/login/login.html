@@ -1,0 +1,31 @@
+<div layout="column" layout-align="center center">
+  <div layout="row" layout-align="center center" flex="50">
+    <h1 class="md-title"> {{ title }} </h1>
+  </div>
+
+  <div layout="row" layout-align="center center">
+    <form name="login_form">
+
+      <div layout="row" layout-align="center center">
+
+        <label>E-mail</label>
+        <input [(ngModel)]="model.username" ngControl="name" title="username" type="email" required="required">
+
+      </div>
+      <div layout-align="center" layout="row">
+
+        <label>Password</label>
+        <input [(ngModel)]="model.password" type="password" title="password" required="required"
+               ng-enter="login.login()">
+
+      </div>
+
+    </form>
+  </div>
+
+  <div layout="row" layout-align="center center">
+    <button ng-click="login.login()">Login</button>
+    <button [routerLink]="['PasswordReset']">Forgot password</button>
+  </div>
+</div>
+

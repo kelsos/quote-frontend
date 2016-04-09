@@ -1,0 +1,39 @@
+<div layout="row" layout-align="center center">
+  <h1 class="md-title">Register</h1>
+</div>
+
+<form name="login_form">
+
+  <div layout="row" layout-align="center center">
+
+    <label>E-mail</label>
+    <input [(ngModel)]="model.username" name="username" title="username" type="email" required="required">
+    <!--<div ng-messages="login_form.username.$error" role="alert">-->
+    <!--<div ng-message="required">This is required.</div>-->
+    <!--<div ng-message="md-minlength">The e-mail address has to be at least 5 characters long.</div>-->
+    <!--</div>-->
+
+  </div>
+  <div layout-align="center center" layout="row">
+
+    <label>Password</label>
+    <input [(ngModel)]="model.password" type="password" title="password" required="required">
+    <!--<div ng-messages="login_form.password.$error">-->
+    <!--<div ng-message="required">Field cannot be empty</div>-->
+    <!--<div ng-message="md-minlength">The password has to be at least 4 characters long.</div>-->
+    <!--</div>-->
+
+  </div>
+  <div layout-align="center center" layout="row">
+
+    <label>Confirm</label>
+    <input [(ngModel)]="model.confirmation" type="password" title="password" required="required">
+
+  </div>
+
+  <div layout="row" layout-align="center center">
+    <button ng-click="register()">Register</button>
+  </div>
+
+</form>
+
