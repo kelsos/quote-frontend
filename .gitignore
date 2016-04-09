@@ -3,5 +3,5 @@ dist
 .sass-cache
 .idea
 typings
-src/**/*.js
-src/**/*.map
+app/**/*.js
+app/**/*.map
