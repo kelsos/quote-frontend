@@ -1,13 +1,14 @@
 import {Component} from "angular2/core";
 import {RouteConfig} from "angular2/router";
-import {LoginComponent} from "./components/login/LoginComponent";
+import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "./components/home/home.component.ts";
-
+import {ToolbarComponent} from "./components/toolbar/toolbar.component";
+import {RegistrationComponent} from "./components/register/registration.component";
 
 @Component({
-  selector: "app",
-  templateUrl: "/app.component.html",
-  directives: [HomeComponent]
+  selector: "quote-app",
+  templateUrl: "app/app.component.html",
+  directives: [HomeComponent, ToolbarComponent]
 })
 
 @RouteConfig([
@@ -21,6 +22,10 @@ import {HomeComponent} from "./components/home/home.component.ts";
     name: "Home",
     component: HomeComponent,
     useAsDefault: true
+  }, {
+    path: "/register",
+    name: "Register",
+    component: RegistrationComponent
   }
 ])
 

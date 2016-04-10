@@ -5,12 +5,12 @@ import {IApiResponse} from "../../model/ILoginResponse";
 
 @Component({
   selector: "quote-recovery",
-  templateUrl: "../..//components/password_recovery/password_recovery.component.html"
+  templateUrl: "app/components/password_recovery/password_recovery.component.html"
 })
 
 export class PasswordRecoveryComponent {
   protected username: string = "";
-  
+
   constructor(private service: RestService) { }
 
   public sendMail():void {

@@ -4,7 +4,7 @@ import {Component} from "angular2/core";
 
 @Component({
   selector: "quote-registration",
-  templateUrl: "../..//components/register/registration.component.html",
+  templateUrl: "app/components/register/registration.component.html",
   providers: [RestService]
 })
 

@@ -4,7 +4,7 @@ import {SessionService} from "../../services/SessionService";
 
 @Component({
   selector: "quote-admin",
-  templateUrl: "../..//components/admin/admin.component.html"
+  templateUrl: "app/components/admin/admin.component.html"
 })
 
 export class AdminComponent {

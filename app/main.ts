@@ -14,9 +14,11 @@ bootstrap(AppComponent, [
     useFactory: (http) => {
       return new AuthHttp(
         new AuthConfig({
-        tokenName: "jwt"
-      }), http);
+          tokenName: "jwt"
+        }), http);
     },
     deps: [Http]
   })
 ]);
+
+

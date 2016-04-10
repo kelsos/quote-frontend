@@ -5,7 +5,7 @@ import {Router} from "angular2/router";
 
 @Component({
   selector: "login",
-  templateUrl: "/login.html",
+  templateUrl: "app/components/login/login.component.html",
   providers: [Router, RestService]
 })
 

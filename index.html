@@ -5,42 +5,46 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- IE required polyfills, in this exact order -->
+
   <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
   <script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
   <script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-  <script src="/node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>
   <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
   <script src="/node_modules/systemjs/dist/system.src.js"></script>
-  <script src="https://npmcdn.com/typescript@1.8.9/lib/typescript.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="/node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="/node_modules/angular2/bundles/router.dev.js"></script>
+  <script src="/node_modules/angular2/bundles/http.dev.js"></script>
+
+  <script src="/node_modules/angular2-jwt/angular2-jwt.js"></script>
+  <script src="/node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>
 
   <!-- 2. Configure SystemJS -->
   <script>
     System.config({
-      transpiler: 'typescript',
-      typescriptOptions: { emitDecoratorMetadata: true },
       packages: {
         app: {
-          defaultExtension: 'ts'
+          format: 'register',
+          defaultExtension: 'js'
         },
         "angular2-jwt": {
           defaultExtension: 'js'
-        },
-        map: {
-          "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
         }
+      },
+      "node_modules/ng2-bootstrap": {
+        "defaultExtension": "js"
+
+      },
+      map: {
+        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js",
+        "ng2-bootstrap/ng2-bootstrap": "node_modules/ng2-bootstrap/ng2-bootstrap"
       }
     });
-
-    System.import('app/main').then(null, console.error.bind(console));
   </script>
-
-  <script src="/node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script src="/node_modules/angular2/bundles/http.dev.js"></script>
-  <script src="/node_modules/angular2/bundles/router.dev.js"></script>
 
 </head>
 <body>
@@ -49,7 +53,7 @@
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<my-app>Loading...</my-app>
+<quote-app>Loading...</quote-app>
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
