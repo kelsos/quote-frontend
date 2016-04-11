@@ -4,18 +4,19 @@ import {ROUTER_PROVIDERS} from "angular2/router";
 import {HTTP_PROVIDERS, Http} from "angular2/http";
 import {AuthHttp, AuthConfig} from "angular2-jwt/angular2-jwt";
 import {provide} from "angular2/core";
-import {AppComponent} from "./app.component.ts";
+import {AppComponent} from "./app.component";
 
 bootstrap(AppComponent, [
   HTTP_PROVIDERS,
   FORM_PROVIDERS,
   ROUTER_PROVIDERS,
   provide(AuthHttp, {
-    useFactory: (http) => {
+    useFactory: (http: Http) : AuthHttp => {
       return new AuthHttp(
         new AuthConfig({
           tokenName: "jwt"
-        }), http);
+        }),
+        http);
     },
     deps: [Http]
   })

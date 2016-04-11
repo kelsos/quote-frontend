@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html>
 <head>
   <meta charset="utf-8">
   <title></title>
@@ -20,7 +20,6 @@
   <script src="/node_modules/angular2/bundles/router.dev.js"></script>
   <script src="/node_modules/angular2/bundles/http.dev.js"></script>
 
-  <script src="/node_modules/angular2-jwt/angular2-jwt.js"></script>
   <script src="/node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>
 
   <!-- 2. Configure SystemJS -->
@@ -40,10 +39,12 @@
 
       },
       map: {
-        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js",
+        "angular2-jwt": "node_modules/angular2-jwt",
         "ng2-bootstrap/ng2-bootstrap": "node_modules/ng2-bootstrap/ng2-bootstrap"
       }
     });
+
+    System.import('app/main').then(null, console.error.bind(console));
   </script>
 
 </head>

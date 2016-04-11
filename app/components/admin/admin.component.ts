@@ -1,6 +1,5 @@
 import {Component} from "angular2/core";
 import {RestService} from "../../services/RestService";
-import {SessionService} from "../../services/SessionService";
 
 @Component({
   selector: "quote-admin",

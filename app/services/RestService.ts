@@ -2,11 +2,12 @@ import {Injectable} from "angular2/core";
 import {IUser} from "../model/IUser";
 import {IQuote} from "../model/IQuote";
 import {ILoginResponse, IApiResponse} from "../model/ILoginResponse";
-import {Http, Response, Headers, RequestOptions} from "angular2/http";
+import {Response, Headers, RequestOptions} from "angular2/http";
 import {Observable}     from "rxjs/Observable";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {User} from "../model/User";
 import "rxjs/Rx";
+import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Injectable()
 export class RestService {
@@ -16,7 +17,7 @@ export class RestService {
     return Observable.throw(error.json().error || "Server Error");
   }
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
   API_URL: string = "http://localhost:3001/api";
   private _usersUrl: string = "/admin/users";
   private _quotesUrl: string = "/quotes";

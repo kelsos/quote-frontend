@@ -1,12 +1,16 @@
 import {Component} from "angular2/core";
 import {SessionService} from "../../services/SessionService";
+import {JwtHelper} from "angular2-jwt/angular2-jwt";
 @Component({
   selector: "quote-toolbar",
-  templateUrl: "app/components/toolbar/toolbar.component.html"
+  templateUrl: "app/components/toolbar/toolbar.component.html",
+  providers: [SessionService]
 })
 
 export class ToolbarComponent {
-  constructor(private session: SessionService) {
+  private jwtHelper: JwtHelper;
+  constructor() {
+    this.jwtHelper = new JwtHelper();
   }
 
   /**
@@ -14,7 +18,8 @@ export class ToolbarComponent {
    *
    * @returns {boolean}
    */
-  public isLogged():boolean {
-    return this.session.isSessionActive();
+  public isLogged(): boolean {
+    let token: string = localStorage.getItem("id_token");
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }

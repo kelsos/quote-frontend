@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
 import {RouteConfig} from "angular2/router";
 import {LoginComponent} from "./components/login/login.component";
-import {HomeComponent} from "./components/home/home.component.ts";
+import {HomeComponent} from "./components/home/home.component";
 import {ToolbarComponent} from "./components/toolbar/toolbar.component";
 import {RegistrationComponent} from "./components/register/registration.component";
 
