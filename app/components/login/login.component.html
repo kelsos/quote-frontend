@@ -15,8 +15,7 @@
       <div layout-align="center" layout="row">
 
         <label>Password</label>
-        <input [(ngModel)]="model.password" type="password" title="password" required="required"
-               ng-enter="login.login()">
+        <input [(ngModel)]="model.password" type="password" title="password" required="required">
 
       </div>
 
@@ -24,7 +23,7 @@
   </div>
 
   <div layout="row" layout-align="center center">
-    <button ng-click="login.login()">Login</button>
+    <button>Login</button>
     <button [routerLink]="['PasswordReset']">Forgot password</button>
   </div>
 </div>

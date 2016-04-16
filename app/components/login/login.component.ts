@@ -1,22 +1,23 @@
 import {Component} from "angular2/core";
 import {User} from "../../model/User";
 import {RestService} from "../../services/RestService";
-import {Router} from "angular2/router";
+import {ROUTER_DIRECTIVES} from "angular2/router";
 
 @Component({
-  selector: "login",
+  selector: "quote-login",
   templateUrl: "app/components/login/login.component.html",
-  providers: [Router, RestService]
+  providers: [RestService],
+  directives: [ROUTER_DIRECTIVES]
 })
 
 export class LoginComponent {
   public title: string = "Login";
   public model: User = new User();
 
-  constructor(private service: RestService, private router: Router) {
+  constructor(private service: RestService) {
   }
 
-  public login():void {
+  public login(): void {
     this.service.login(this.model).subscribe(resp => {
       if (resp.success) {
 

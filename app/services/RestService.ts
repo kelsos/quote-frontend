@@ -6,24 +6,25 @@ import {Response, Headers, RequestOptions} from "angular2/http";
 import {Observable}     from "rxjs/Observable";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {User} from "../model/User";
-import "rxjs/Rx";
+import "rxjs/add/operator/map"
 import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Injectable()
 export class RestService {
 
-  static handleError(error: Response): ErrorObservable {
+  constructor(private http: AuthHttp) { }
+
+  private API_URL: string = "http://api.quote.dev";
+  private _usersUrl: string = `${this.API_URL}/admin/users`;
+  private _quotesUrl: string = `${this.API_URL}/quotes`;
+  private _loginUrl: string = `${this.API_URL}/login`;
+  private _registerUrl: string = `${this.API_URL}/register`;
+  private _passwordReset: string = `${this.API_URL}/forgot`;
+
+  protected handleError(error: Response): ErrorObservable {
     console.log(error);
     return Observable.throw(error.json().error || "Server Error");
   }
-
-  constructor(private http: AuthHttp) { }
-  API_URL: string = "http://localhost:3001/api";
-  private _usersUrl: string = "/admin/users";
-  private _quotesUrl: string = "/quotes";
-  private _loginUrl: string = "/login";
-  private _registerUrl: string = "/register";
-  private _passwordReset: string = "/forgot";
 
   /**
    *
@@ -35,7 +36,7 @@ export class RestService {
   public loadUsers(): Observable<IUser[]> {
     return this.http.get(this._usersUrl)
       .map(res => <IUser[]> res.json().data)
-      .catch(RestService.handleError);
+      .catch(this.handleError);
   }
 
   /**
@@ -47,7 +48,7 @@ export class RestService {
   public loadQuotes(): Observable<IQuote[]> {
     return this.http.get(this._quotesUrl)
       .map(res => <IQuote[]>res.json().data)
-      .catch(RestService.handleError);
+      .catch(this.handleError);
   }
 
   /**
@@ -66,7 +67,7 @@ export class RestService {
 
     return this.http.post(this._loginUrl, body, options)
       .map(res => <ILoginResponse>res.json())
-      .catch(RestService.handleError);
+      .catch(this.handleError);
   }
 
   /**
@@ -86,7 +87,7 @@ export class RestService {
 
     return this.http.post(this._registerUrl, body, options)
       .map(res => <IApiResponse>res.json())
-      .catch(RestService.handleError);
+      .catch(this.handleError);
   }
 
   /**
@@ -106,7 +107,7 @@ export class RestService {
 
     return this.http.post(this._passwordReset, body, options)
       .map(res => <IApiResponse>res.json())
-      .catch(RestService.handleError);
+      .catch(this.handleError);
   }
 }
 

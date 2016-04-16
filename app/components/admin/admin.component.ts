@@ -7,5 +7,5 @@ import {RestService} from "../../services/RestService";
 })
 
 export class AdminComponent {
-  constructor(private session: SessionService, private api: RestService) { }
+  constructor(private api: RestService) { }
 }

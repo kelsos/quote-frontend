@@ -4,11 +4,12 @@ import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "./components/home/home.component";
 import {ToolbarComponent} from "./components/toolbar/toolbar.component";
 import {RegistrationComponent} from "./components/register/registration.component";
+import {PasswordRecoveryComponent} from "./components/password_recovery/password_recovery.component";
 
 @Component({
   selector: "quote-app",
   templateUrl: "app/app.component.html",
-  directives: [HomeComponent, ToolbarComponent]
+  directives: [HomeComponent, ToolbarComponent, LoginComponent]
 })
 
 @RouteConfig([
@@ -26,6 +27,10 @@ import {RegistrationComponent} from "./components/register/registration.componen
     path: "/register",
     name: "Register",
     component: RegistrationComponent
+  }, {
+    path: "/password-reset",
+    name: "PasswordReset",
+    component: PasswordRecoveryComponent
   }
 ])
 

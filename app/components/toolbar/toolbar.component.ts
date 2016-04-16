@@ -1,10 +1,8 @@
 import {Component} from "angular2/core";
-import {SessionService} from "../../services/SessionService";
 import {JwtHelper} from "angular2-jwt/angular2-jwt";
 @Component({
   selector: "quote-toolbar",
-  templateUrl: "app/components/toolbar/toolbar.component.html",
-  providers: [SessionService]
+  templateUrl: "app/components/toolbar/toolbar.component.html"
 })
 
 export class ToolbarComponent {
