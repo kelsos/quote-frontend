@@ -2,17 +2,19 @@ import {Injectable} from "angular2/core";
 import {IUser} from "../model/IUser";
 import {IQuote} from "../model/IQuote";
 import {ILoginResponse, IApiResponse} from "../model/ILoginResponse";
-import {Response, Headers, RequestOptions} from "angular2/http";
+import {Response, Headers, RequestOptions, Http} from "angular2/http";
 import {Observable}     from "rxjs/Observable";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {User} from "../model/User";
-import "rxjs/add/operator/map"
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
+import "rxjs/add/observable/throw";
 import {AuthHttp} from "angular2-jwt/angular2-jwt";
 
 @Injectable()
 export class RestService {
 
-  constructor(private http: AuthHttp) { }
+  constructor(private authHttp: AuthHttp, private http: Http) { }
 
   private API_URL: string = "http://api.quote.dev";
   private _usersUrl: string = `${this.API_URL}/admin/users`;
@@ -34,7 +36,7 @@ export class RestService {
    * @returns {Observable<IUser[]>}
    */
   public loadUsers(): Observable<IUser[]> {
-    return this.http.get(this._usersUrl)
+    return this.authHttp.get(this._usersUrl)
       .map(res => <IUser[]> res.json().data)
       .catch(this.handleError);
   }
@@ -46,7 +48,7 @@ export class RestService {
    * @returns {Observable<IQuote[]>}
    */
   public loadQuotes(): Observable<IQuote[]> {
-    return this.http.get(this._quotesUrl)
+    return this.authHttp.get(this._quotesUrl)
       .map(res => <IQuote[]>res.json().data)
       .catch(this.handleError);
   }
@@ -105,7 +107,7 @@ export class RestService {
     let headers: Headers = new Headers({ "Content-Type": "application/json" });
     let options: RequestOptions = new RequestOptions({ headers: headers});
 
-    return this.http.post(this._passwordReset, body, options)
+    return this.authHttp.post(this._passwordReset, body, options)
       .map(res => <IApiResponse>res.json())
       .catch(this.handleError);
   }

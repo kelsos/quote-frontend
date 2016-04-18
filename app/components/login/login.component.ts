@@ -18,10 +18,14 @@ export class LoginComponent {
   }
 
   public login(): void {
+    console.log("Attempting login");
     this.service.login(this.model).subscribe(resp => {
       if (resp.success) {
 
+      } else {
+
       }
+      console.log(resp);
     });
   }
 
