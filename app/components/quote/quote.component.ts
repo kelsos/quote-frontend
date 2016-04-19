@@ -4,7 +4,8 @@ import {IQuote} from "../../model/IQuote";
 
 @Component({
   selector: "quote-data",
-  templateUrl: "app/components/quote/quote.component.html"
+  templateUrl: "app/components/quote/quote.component.html",
+  providers: [RestService]
 })
 
 export class QuoteComponent {

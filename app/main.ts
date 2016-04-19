@@ -12,11 +12,7 @@ bootstrap(AppComponent, [
   ROUTER_PROVIDERS,
   provide(AuthHttp, {
       useFactory: (http: Http): AuthHttp => {
-        return new AuthHttp(
-          new AuthConfig({
-            tokenName: "jwt"
-          }),
-          http);
+        return new AuthHttp(new AuthConfig(), http);
       },
       deps: [Http]
     }

@@ -1,23 +1,11 @@
-<md-button class="md-fab md-fab-bottom-right md-button" aria-label="Add a new Quote" ng-click="quote.openDialog()">
-  <md-icon md-svg-icon="images/ic_add_48px.svg"></md-icon>
-</md-button>
-
-<md-content layout-align="center center" flex="80" flex-offset="10">
-  <md-list>
-    <md-list-item ng-repeat="quote in quote.quotes">
-
-    <div class="md-list-item-text">
-      <h3 class="md-title">{{quote.title}}</h3>
-      <p class="md-body-1" ng-bind-html="quote.quote | newlines | linkify"></p>
-      <h6 class="md-caption"><span ng-show="quote.published != null">Published on</span> {{quote.published | dateConvert}}</h6>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div *ngFor="#quote of quotes">
+      <h3>{{quote.title}}</h3>
+      <p>{{quote.quote}}</p>
+      <h6 class="md-caption"><span (show)="quote.published != null">Published on</span> {{quote.published}}</h6>
     </div>
-
-    <md-divider ng-if="!$last"></md-divider>
-
-    </md-list-item>
-  </md-list>
-</md-content>
-
-
+  </div>
+</div>
 
 

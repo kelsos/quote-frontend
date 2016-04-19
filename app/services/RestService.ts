@@ -7,6 +7,7 @@ import {Observable}     from "rxjs/Observable";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {User} from "../model/User";
 import "rxjs/add/operator/map";
+import "rxjs/add/operator/do";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 import {AuthHttp} from "angular2-jwt/angular2-jwt";
@@ -18,7 +19,7 @@ export class RestService {
 
   private API_URL: string = "http://api.quote.dev";
   private _usersUrl: string = `${this.API_URL}/admin/users`;
-  private _quotesUrl: string = `${this.API_URL}/quotes`;
+  private _quotesUrl: string = `${this.API_URL}/quote`;
   private _loginUrl: string = `${this.API_URL}/login`;
   private _registerUrl: string = `${this.API_URL}/register`;
   private _passwordReset: string = `${this.API_URL}/forgot`;
@@ -69,6 +70,10 @@ export class RestService {
 
     return this.http.post(this._loginUrl, body, options)
       .map(res => <ILoginResponse>res.json())
+      .do((next: ILoginResponse) => {
+        localStorage.setItem("id_token", next.token);
+        console.log(next.token);
+      })
       .catch(this.handleError);
   }
 

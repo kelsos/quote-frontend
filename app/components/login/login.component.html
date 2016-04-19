@@ -1,30 +1,33 @@
-<div layout="column" layout-align="center center">
-  <div layout="row" layout-align="center center" flex="50">
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
     <h1 class="md-title"> {{ title }} </h1>
   </div>
+</div>
 
-  <div layout="row" layout-align="center center">
-    <form name="login_form">
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
 
-      <div layout="row" layout-align="center center">
-
-        <label>E-mail</label>
-        <input [(ngModel)]="model.username" ngControl="name" title="username" type="email" required="required">
-
+    <form name="login_form" [ngFormModel]="form" (submit)="login()">
+      <div class="form-group">
+        <label for="username">E-mail</label>
+        <input [(ngModel)]="model.username" ngControl="username" title="username" type="email" required="required"
+               class="form-control" id="username">
       </div>
-      <div layout-align="center" layout="row">
 
-        <label>Password</label>
-        <input [(ngModel)]="model.password" type="password" title="password" required="required">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input [(ngModel)]="model.password" ngControl="password" type="password" title="password"
+               required="required" id="password"
+               class="form-control">
+      </div>
 
+      <div>
+        <button type="submit" class="btn">Login</button>
+        <button [routerLink]="['PasswordReset']" class="btn">Forgot password</button>
       </div>
 
     </form>
   </div>
 
-  <div layout="row" layout-align="center center">
-    <button (click)="login()">Login</button>
-    <button [routerLink]="['PasswordReset']">Forgot password</button>
-  </div>
 </div>
 
