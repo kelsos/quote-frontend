@@ -2,7 +2,7 @@ import {Injectable} from "angular2/core";
 import {IUser} from "../model/IUser";
 import {IQuote} from "../model/IQuote";
 import {ILoginResponse, IApiResponse} from "../model/ILoginResponse";
-import {Response, Headers, RequestOptions, Http} from "angular2/http";
+import {Response, Headers, RequestOptions, Http, URLSearchParams} from "angular2/http";
 import {Observable}     from "rxjs/Observable";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {User} from "../model/User";
@@ -11,6 +11,7 @@ import "rxjs/add/operator/do";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 import {AuthHttp} from "angular2-jwt/angular2-jwt";
+import {IPage} from "../model/IPage";
 
 @Injectable()
 export class RestService {
@@ -46,11 +47,17 @@ export class RestService {
    * Does a remote request to the quote-backend api and returns a Promise to a collection of
    * {@link IQuote} items;
    *
-   * @returns {Observable<IQuote[]>}
+   * @returns {Observable<IPage<IQuote[]>>}
    */
-  public loadQuotes(): Observable<IQuote[]> {
-    return this.authHttp.get(this._quotesUrl)
-      .map(res => <IQuote[]>res.json().data)
+  public loadQuotes(offset: Number = 0, limit: Number = 10): Observable<IPage<IQuote[]>> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.append("limit", limit);
+    params.append("offset", offset);
+
+    return this.authHttp.get(this._quotesUrl, {
+      search: params
+    })
+      .map(res => <IQuote[]>res.json())
       .catch(this.handleError);
   }
 
