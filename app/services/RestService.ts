@@ -49,15 +49,15 @@ export class RestService {
    *
    * @returns {Observable<IPage<IQuote[]>>}
    */
-  public loadQuotes(offset: Number = 0, limit: Number = 10): Observable<IPage<IQuote[]>> {
+  public loadQuotes(offset: number = 0, limit: number = 10): Observable<IPage<IQuote[]>> {
     let params: URLSearchParams = new URLSearchParams();
-    params.append("limit", limit);
-    params.append("offset", offset);
+    params.append("limit", String(limit));
+    params.append("offset", String(offset));
 
     return this.authHttp.get(this._quotesUrl, {
       search: params
     })
-      .map(res => <IQuote[]>res.json())
+      .map(res => <IPage<IQuote[]>>res.json())
       .catch(this.handleError);
   }
 
