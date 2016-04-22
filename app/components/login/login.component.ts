@@ -7,6 +7,7 @@ import {FormBuilder, ControlGroup, FORM_DIRECTIVES, Validators} from "angular2/c
 @Component({
   selector: "quote-login",
   templateUrl: "app/components/login/login.component.html",
+  styleUrls: [ "app/components/login/login.component.css" ],
   providers: [RestService, ROUTER_PROVIDERS],
   directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES]
 })

@@ -1,4 +1,13 @@
-<quote-toolbar></quote-toolbar>
+<nav class="navbar navbar-dark bg-inverse navbar-sticky-top">
+  <a class="navbar-brand" href="#">Quote</a>
+
+  <ul class="nav navbar-nav">
+    <li [hidden]="isLogged()">
+      <a [routerLink]="['Login']" class="nav-link" >Login</a>
+    </li>
+  </ul>
+</nav>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>

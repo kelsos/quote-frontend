@@ -1,16 +1,16 @@
 import {Component} from "angular2/core";
-import {RouteConfig, RouterOutlet} from "angular2/router";
+import {RouteConfig, RouterOutlet, ROUTER_DIRECTIVES} from "angular2/router";
 import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "./components/home/home.component";
-import {ToolbarComponent} from "./components/toolbar/toolbar.component";
 import {RegistrationComponent} from "./components/register/registration.component";
 import {PasswordRecoveryComponent} from "./components/password_recovery/password_recovery.component";
 import {QuoteComponent} from "./components/quote/quote.component";
+import {JwtHelper} from "angular2-jwt/angular2-jwt";
 
 @Component({
   selector: "quote-app",
   templateUrl: "app/app.component.html",
-  directives: [HomeComponent, ToolbarComponent, LoginComponent, RouterOutlet]
+  directives: [HomeComponent, LoginComponent, RouterOutlet, ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
@@ -39,4 +39,20 @@ import {QuoteComponent} from "./components/quote/quote.component";
   }
 ])
 
-export class AppComponent {}
+export class AppComponent {
+  private jwtHelper: JwtHelper;
+
+  constructor() {
+    this.jwtHelper = new JwtHelper();
+  }
+
+  /**
+   * Checks if the user session is active
+   *
+   * @returns {boolean}
+   */
+  public isLogged(): boolean {
+    let token: string = localStorage.getItem("id_token");
+    return token && !this.jwtHelper.isTokenExpired(token);
+  }
+}
